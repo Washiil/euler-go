@@ -17,6 +17,7 @@ func main() {
 	problemMap := map[string](func() int){
 		"1": problems.Solve001,
 		"2": problems.Solve002,
+		"3": problems.Solve003,
 	}
 
 	arg := os.Args[1]
