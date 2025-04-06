@@ -9,15 +9,19 @@ import (
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Usage: go run main.go [problem number]")
-		return
-	}
-
 	problemMap := map[string](func() int){
 		"1": problems.Solve001,
 		"2": problems.Solve002,
 		"3": problems.Solve003,
+		"4": problems.Solve004,
+	}
+
+	if len(os.Args) < 2 {
+		for i, fn := range problemMap {
+			result := fn()
+			fmt.Printf("Problem [%s] : %d\n", i, result)
+		}
+		return
 	}
 
 	arg := os.Args[1]
