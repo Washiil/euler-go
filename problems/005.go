@@ -18,3 +18,7 @@ func Solve005() int {
 		}
 	}
 }
+
+func init() {
+	Register("5", Solve005)
+}

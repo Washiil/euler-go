@@ -16,3 +16,7 @@ func Solve006() int {
 
 	return difference
 }
+
+func init() {
+	Register("6", Solve006)
+}
