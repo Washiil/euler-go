@@ -51,3 +51,7 @@ func Solve004() int {
 
 	return maximum
 }
+
+func init() {
+	Register("4", Solve004)
+}

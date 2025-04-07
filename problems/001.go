@@ -14,3 +14,7 @@ func Solve001() int {
 
 	return sum
 }
+
+func init() {
+	Register("1", Solve001)
+}

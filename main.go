@@ -4,33 +4,73 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
 
 	"github.com/washiil/euler-go/problems"
 )
 
 func main() {
-	problemMap := map[string](func() int){
-		"1": problems.Solve001,
-		"2": problems.Solve002,
-		"3": problems.Solve003,
-		"4": problems.Solve004,
-		"5": problems.Solve005,
-		"6": problems.Solve006,
-	}
+	register := problems.GetProblems()
 
 	if len(os.Args) < 2 {
-		for i, fn := range problemMap {
-			result := fn()
-			fmt.Printf("Problem [%s] : %d\n", i, result)
+		fmt.Printf("Please input a valid problem number\n$ go run main <number>\n")
+		return
+	} else if len(os.Args) == 3 && os.Args[1] == "create" {
+		// Creating file
+		num, err := strconv.Atoi(os.Args[2])
+		if err != nil {
+			fmt.Printf("Invalid problem number please try again.")
+			return
 		}
+		createFromTemplate(num)
 		return
 	}
 
 	arg := os.Args[1]
-	if fn, ok := problemMap[arg]; ok {
+	if fn, ok := register[arg]; ok {
 		result := fn()
 		fmt.Printf("Problem [%s] : %d", arg, result)
 	} else {
 		fmt.Printf("Problem %s not implemented.\n", arg)
 	}
+}
+
+func createFromTemplate(number int) error {
+	replacement := fmt.Sprintf("%03d", number)
+	templateFile := "template.txt"
+	outputFile := fmt.Sprintf("problems/%s.go", replacement)
+	placeholder := "__PROBLEM_NUMBER__"
+
+	// 1. Read the entire content of the template file
+	templateBytes, err := os.ReadFile(templateFile)
+	if err != nil {
+		// Wrap the error with more context
+		return fmt.Errorf("failed to read template file '%s': %w", templateFile, err)
+	}
+	templateContent := string(templateBytes)
+
+	// 2. Perform the replacement
+	// strings.ReplaceAll finds *all* non-overlapping instances of 'placeholder'
+	// and replaces them with 'replacementValue'.
+	outputContent := strings.ReplaceAll(templateContent, placeholder, replacement)
+
+	// 3. Ensure the output directory exists (optional but good practice)
+	outputDir := filepath.Dir(outputFile)
+	if err := os.MkdirAll(outputDir, 0755); err != nil { // 0755 permissions: rwxr-xr-x
+		return fmt.Errorf("failed to create output directory '%s': %w", outputDir, err)
+	}
+
+	// 4. Write the modified content to the new output file
+	// os.WriteFile creates the file if it doesn't exist, or truncates it if it does.
+	// 0644 permissions are common for files (rw-r--r--).
+	err = os.WriteFile(outputFile, []byte(outputContent), 0644)
+	if err != nil {
+		return fmt.Errorf("failed to write output file '%s': %w", outputFile, err)
+	}
+
+	// If we reached here, everything was successful
+	fmt.Printf("Successfully created '%s' from template '%s'\n", outputFile, templateFile)
+	return nil
 }

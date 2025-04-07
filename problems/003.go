@@ -19,3 +19,7 @@ func Solve003() int {
 	factor := largestPrimeFactor(bigNum)
 	return factor
 }
+
+func init() {
+	Register("3", Solve003)
+}

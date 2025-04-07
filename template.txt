@@ -1,0 +1,11 @@
+package problems
+
+func Solve__PROBLEM_NUMBER__() int {
+	output := 0
+
+    return output
+}
+
+func init() {
+	Register("__PROBLEM_NUMBER__", Solve__PROBLEM_NUMBER__)
+}
