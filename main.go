@@ -15,6 +15,7 @@ func main() {
 		"3": problems.Solve003,
 		"4": problems.Solve004,
 		"5": problems.Solve005,
+		"6": problems.Solve006,
 	}
 
 	if len(os.Args) < 2 {
