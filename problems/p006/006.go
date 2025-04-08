@@ -1,4 +1,6 @@
-package problems
+package p006
+
+import "github.com/washiil/euler-go/problems/registry"
 
 func Solve006() int {
 	n := 100
@@ -18,5 +20,5 @@ func Solve006() int {
 }
 
 func init() {
-	Register("6", Solve006)
+	registry.Register("6", Solve006)
 }

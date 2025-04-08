@@ -1,4 +1,6 @@
-package problems
+package p001
+
+import "github.com/washiil/euler-go/problems/registry"
 
 /*
 Find the sum of all multiples of 3 or 5 below 1000
@@ -16,5 +18,5 @@ func Solve001() int {
 }
 
 func init() {
-	Register("1", Solve001)
+	registry.Register("1", Solve001)
 }

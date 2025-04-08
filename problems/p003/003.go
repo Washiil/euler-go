@@ -1,4 +1,6 @@
-package problems
+package p003
+
+import "github.com/washiil/euler-go/problems/registry"
 
 // Largest Prime Factor of 600851475143
 
@@ -21,5 +23,5 @@ func Solve003() int {
 }
 
 func init() {
-	Register("3", Solve003)
+	registry.Register("3", Solve003)
 }

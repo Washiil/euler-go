@@ -8,11 +8,19 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/washiil/euler-go/problems"
+	_ "github.com/washiil/euler-go/problems/p001"
+	_ "github.com/washiil/euler-go/problems/p002"
+	_ "github.com/washiil/euler-go/problems/p003"
+	_ "github.com/washiil/euler-go/problems/p004"
+	_ "github.com/washiil/euler-go/problems/p005"
+	_ "github.com/washiil/euler-go/problems/p006"
+	_ "github.com/washiil/euler-go/problems/p007"
+
+	"github.com/washiil/euler-go/problems/registry"
 )
 
 func main() {
-	register := problems.GetProblems()
+	register := registry.Problems
 
 	if len(os.Args) < 2 {
 		fmt.Printf("Please input a valid problem number\n$ go run main <number>\n")

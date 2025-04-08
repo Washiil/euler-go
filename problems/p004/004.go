@@ -1,4 +1,6 @@
-package problems
+package p004
+
+import "github.com/washiil/euler-go/problems/registry"
 
 // Find the largest palindrome made from the product of two -digit numbers.
 
@@ -53,5 +55,5 @@ func Solve004() int {
 }
 
 func init() {
-	Register("4", Solve004)
+	registry.Register("4", Solve004)
 }

@@ -1,4 +1,6 @@
-package problems
+package p002
+
+import "github.com/washiil/euler-go/problems/registry"
 
 // By considering the terms in the Fibonacci sequence whose values
 // do not exceed four million, find the sum of the even-valued terms.
@@ -18,5 +20,5 @@ func Solve002() int {
 }
 
 func init() {
-	Register("2", Solve002)
+	registry.Register("2", Solve002)
 }

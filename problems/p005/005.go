@@ -1,4 +1,6 @@
-package problems
+package p005
+
+import "github.com/washiil/euler-go/problems/registry"
 
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 ?
 
@@ -20,5 +22,5 @@ func Solve005() int {
 }
 
 func init() {
-	Register("5", Solve005)
+	registry.Register("5", Solve005)
 }
