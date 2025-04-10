@@ -18,6 +18,7 @@ import (
 	_ "github.com/washiil/euler-go/problems/p008"
 	_ "github.com/washiil/euler-go/problems/p009"
 	_ "github.com/washiil/euler-go/problems/p010"
+	_ "github.com/washiil/euler-go/problems/p011"
 
 	"github.com/washiil/euler-go/problems/registry"
 )

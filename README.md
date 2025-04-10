@@ -59,10 +59,19 @@ Ensure you have Go installed and configured on your system.
     ```
 
 ## Adding New Solutions
-
-1.  Implement the logic for the new problem (e.g., `problem_N.go` containing a function `SolveProblemN()`).
-2.  Update `main.go` to include a case or mapping for the new problem number, directing it to call your new `SolveProblemN()` function.
-3.  Ensure the new function prints the result in the standard format: `Problem [N] : <answer>`.
+1.  **Run the `create` command**
+    ```
+    foo@bar:~/euler-go$ go run main.go create <problem_number>
+    ```
+2.  Make edits to the file under `problems/p<problem_number>.go`
+3.  Make sure that you anonymously import the package to main.go
+    ```
+    import (
+        _ "github.com/washiil/euler-go/problems/p001"
+        ...
+        _ "github.com/washiil/euler-go/problems/p<problem_number>"
+    )
+    ```
 4.  Test your solution!
 
 ## Contributing
