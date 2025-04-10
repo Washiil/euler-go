@@ -24,10 +24,29 @@ func checkPrime(n int) bool {
 }
 
 func Solve010() int {
-	sum := 0
+	const limit = 2_000_000
 
-	for i := 2; i < 2_000_000; i++ {
-		if checkPrime(i) {
+	// First consider all numbers as prime
+	isPrime := make([]bool, limit)
+	for i := 2; i < limit; i++ {
+		isPrime[i] = true
+	}
+
+	// Implement Sieve of Eratosthenes
+	for i := 2; i < limit; i++ {
+		if !isPrime[i] {
+			continue
+		}
+		// Remove numbers who are multiples of prime as they cannot be prime
+		for j := i * i; j < limit; j += i {
+			isPrime[j] = false
+		}
+	}
+
+	// Sum prime numbers
+	sum := 0
+	for i := 2; i < limit; i++ {
+		if isPrime[i] {
 			sum += i
 		}
 	}
