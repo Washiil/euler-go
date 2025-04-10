@@ -1,4 +1,8 @@
-package problems
+package p__PROBLEM_NUMBER__
+
+import (
+	"github.com/washiil/euler-go/problems/registry"
+)
 
 func Solve__PROBLEM_NUMBER__() int {
 	output := 0
@@ -7,5 +11,5 @@ func Solve__PROBLEM_NUMBER__() int {
 }
 
 func init() {
-	Register("__PROBLEM_NUMBER__", Solve__PROBLEM_NUMBER__)
+	registry.Register("__PROBLEM_NUMBER__", Solve__PROBLEM_NUMBER__)
 }

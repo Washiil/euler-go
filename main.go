@@ -16,6 +16,7 @@ import (
 	_ "github.com/washiil/euler-go/problems/p006"
 	_ "github.com/washiil/euler-go/problems/p007"
 	_ "github.com/washiil/euler-go/problems/p008"
+	_ "github.com/washiil/euler-go/problems/p009"
 
 	"github.com/washiil/euler-go/problems/registry"
 )
@@ -49,7 +50,7 @@ func main() {
 func createFromTemplate(number int) error {
 	replacement := fmt.Sprintf("%03d", number)
 	templateFile := "template.txt"
-	outputFile := fmt.Sprintf("problems/%s.go", replacement)
+	outputFile := fmt.Sprintf("problems/p%s/%s.go", replacement, replacement)
 	placeholder := "__PROBLEM_NUMBER__"
 
 	// 1. Read the entire content of the template file
