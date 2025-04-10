@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	_ "github.com/washiil/euler-go/problems/p001"
 	_ "github.com/washiil/euler-go/problems/p002"
@@ -50,9 +51,34 @@ func main() {
 			result := fn()
 			fmt.Printf("Problem [%s] : %d\n", key, result)
 		}
+	} else if arg == "benchmark" {
+		if len(os.Args) < 3 {
+			fmt.Printf("Please input a valid problem number\n$ go run main benchmark <number>\n")
+			return
+		}
+		if fn, ok := register[os.Args[2]]; ok {
+			const samples = 10
+			fmt.Printf("Sampling function %d times\n", samples)
+			avg_runtime := benchmark(fn, samples)
+			fmt.Printf("Problem [%s] : %s\n", os.Args[2], avg_runtime)
+		}
 	} else {
 		fmt.Printf("Problem %s not implemented.\n", arg)
 	}
+}
+
+func benchmark(function func() int, samples int) time.Duration {
+	var total_duration time.Duration
+
+	for i := 0; i < samples; i++ {
+		start := time.Now()
+		function()
+		elapsed := time.Since(start)
+		total_duration += elapsed
+	}
+
+	average := total_duration / time.Duration(samples)
+	return average
 }
 
 func createFromTemplate(number int) error {
