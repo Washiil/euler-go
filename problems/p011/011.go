@@ -31,17 +31,11 @@ func Solve011() int {
 	}
 
 	// (x, y)
-	vectors := [8][2]int{
-		{1, 0},  // Moving right
-		{-1, 0}, // Moving left
-		{0, 1},  // Moving down
-		{0, -1}, // Moving up
-
-		{1, -1}, // Moving up and right
-		{1, 1},  // Moving down and right
-
-		{-1, -1}, // Moving up and left
-		{-1, 1},  // Moving down and left
+	vectors := [4][2]int{
+		{1, 0},  // Right
+		{0, 1},  // Down
+		{1, 1},  // Down-right diagonal
+		{-1, 1}, // Down-left diagonal
 	}
 
 	for y := 0; y < 20; y++ {

@@ -44,6 +44,11 @@ func main() {
 	if fn, ok := register[arg]; ok {
 		result := fn()
 		fmt.Printf("Problem [%s] : %d", arg, result)
+	} else if arg == "all" {
+		for key, fn := range register {
+			result := fn()
+			fmt.Printf("Problem [%s] : %d\n", key, result)
+		}
 	} else {
 		fmt.Printf("Problem %s not implemented.\n", arg)
 	}
