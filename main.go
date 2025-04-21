@@ -1,4 +1,3 @@
-// main.go
 package main
 
 import (
@@ -24,6 +23,7 @@ import (
 	_ "github.com/washiil/euler-go/problems/p013"
 	_ "github.com/washiil/euler-go/problems/p014"
 	_ "github.com/washiil/euler-go/problems/p015"
+	_ "github.com/washiil/euler-go/problems/p016"
 
 	"github.com/washiil/euler-go/problems/registry"
 )
