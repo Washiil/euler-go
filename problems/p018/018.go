@@ -24,32 +24,33 @@ var pyramid = [][]int{
 	{4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23},
 }
 
+var memo = make(map[string]int)
+
 func recursive_solve(level int, index int, sum int) int {
 	if level >= len(pyramid) || index > level || index < 0 {
 		return sum
 	}
-	fmt.Printf("%d\n", pyramid[level][index])
+
+	key := fmt.Sprintf("%d|%d", level, index)
+	if val, found := memo[key]; found {
+		return sum + val
+	}
 
 	// Dont change index becaues lowering a level causes it to switch naturally
 	left_val := pyramid[level][index] + recursive_solve(level+1, index, sum)
 	right_val := pyramid[level][index] + recursive_solve(level+1, index+1, sum)
 
 	if left_val > right_val {
+		memo[key] = left_val
 		return left_val
 	} else {
+		memo[key] = right_val
 		return right_val
 	}
 }
 
 func Solve018() int {
 	output := 0
-
-	for i := range pyramid {
-		for j := range pyramid[i] {
-			fmt.Printf("%d, ", pyramid[i][j])
-		}
-		fmt.Printf("\n")
-	}
 
 	output = recursive_solve(0, 0, 0)
 
