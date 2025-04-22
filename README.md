@@ -2,7 +2,7 @@
 
 [![Go Version](https://img.shields.io/badge/Go-1.XX+-blue.svg)](https://golang.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
-Knocking out two birds with one stone by learning Go and solving Project Euler Problems. This repository contains my personal solutions to these problems, developed as an exercise in learning the Go programming language. Currently, solutions aim to use only the Go standard library.
+Knocking out two birds with one stone by learning Go and solving Project Euler Problems. This repository contains my personal solutions to these problems, developed as an exercise in learning the Go programming language. Currently, solutions aim to mainly use the Go standard library.
 
 ## What is Project Euler?
 
@@ -16,7 +16,7 @@ Knocking out two birds with one stone by learning Go and solving Project Euler P
 
 * **Learn Go:** Gain proficiency in Go syntax, idioms, and standard library usage.
 * **Solve Euler Problems:** Systematically work through Project Euler problems.
-* **Standard Library Focus:** Explore the capabilities of Go's standard library by using it exclusively for solutions (where feasible).
+* **Standard Library Focus:** Explore the capabilities of Go's standard library by using it exclusively for solutions (where resonable).
 * **Clean Code:** Write clear, readable, and reasonably efficient Go code.
 
 ## Project Structure
