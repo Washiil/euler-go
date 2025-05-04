@@ -5,10 +5,13 @@ import (
 )
 
 func sumOfDivisors(n int) int {
-	sum := 0
-	for i := 1; i < n/2; i++ {
+	sum := 1
+	for i := 2; i*i <= n; i++ {
 		if n%i == 0 {
 			sum += i
+			if i != n/i {
+				sum += n / i
+			}
 		}
 	}
 	return sum
@@ -18,13 +21,31 @@ func isAbundant(n int) bool {
 	return sumOfDivisors(n) > n
 }
 
+const limit = 28123
+
 func Solve023() int {
 	output := 0
-	abundantNums := make([]int, 100)
 
-	for i := 1; i < 28123; i++ {
+	var abundantNumbers []int
+	for i := 12; i <= limit; i++ {
 		if isAbundant(i) {
-			abundantNums = append(abundantNums, i)
+			abundantNumbers = append(abundantNumbers, i)
+		}
+	}
+
+	canBeWrittenAsAbundantSum := make([]bool, limit+1)
+	for i := 0; i < len(abundantNumbers); i++ {
+		for j := i; j < len(abundantNumbers); j++ {
+			sum := abundantNumbers[i] + abundantNumbers[j]
+			if sum <= limit {
+				canBeWrittenAsAbundantSum[sum] = true
+			}
+		}
+	}
+
+	for i := 1; i <= limit; i++ {
+		if !canBeWrittenAsAbundantSum[i] {
+			output += i
 		}
 	}
 
@@ -32,5 +53,5 @@ func Solve023() int {
 }
 
 func init() {
-	registry.Register("023", Solve023)
+	registry.Register("23", Solve023)
 }

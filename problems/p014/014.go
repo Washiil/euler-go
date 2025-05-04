@@ -5,23 +5,23 @@ import (
 )
 
 func Solve014() int {
-	maximum_length := -1
-	largest_value := -1
+	maximumLength := -1
+	largestValue := -1
 
-	collatz_sequences := make(map[int]int)
+	collatzSequences := make(map[int]int)
 
 	for i := 1; i < 1_000_000; i++ {
-		sequence_length := 1
-		val, ok := collatz_sequences[i]
+		sequenceLength := 1
+		val, ok := collatzSequences[i]
 
 		if ok {
-			sequence_length += val
+			sequenceLength += val
 		} else {
 			curr := i
 			for curr != 1 {
 				// Check if we already know the sequence length from this point
-				if val, ok := collatz_sequences[curr]; ok && curr != i {
-					sequence_length += val - 1
+				if val, ok := collatzSequences[curr]; ok && curr != i {
+					sequenceLength += val - 1
 					break
 				}
 
@@ -30,17 +30,17 @@ func Solve014() int {
 				} else {
 					curr = (3 * curr) + 1
 				}
-				sequence_length += 1
+				sequenceLength += 1
 			}
-			collatz_sequences[i] = sequence_length
+			collatzSequences[i] = sequenceLength
 		}
-		if sequence_length > maximum_length {
-			maximum_length = sequence_length
-			largest_value = i
+		if sequenceLength > maximumLength {
+			maximumLength = sequenceLength
+			largestValue = i
 		}
 	}
 
-	return largest_value
+	return largestValue
 }
 
 func init() {

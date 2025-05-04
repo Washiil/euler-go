@@ -12,16 +12,16 @@ func Solve008() int {
 	values := make([]int, len(input))
 
 	for _, c := range input {
-		values = append(values, (int(c) - '0'))
+		values = append(values, int(c)-'0')
 	}
 
 	// Implement a sliding window
-	const window_size = 13
+	const windowSize = 13
 	largest := 0
 
-	for i := 0; i < len(values)-window_size; i++ {
+	for i := 0; i < len(values)-windowSize; i++ {
 		product := 1
-		for j := i; j < i+window_size; j++ {
+		for j := i; j < i+windowSize; j++ {
 			product *= values[j]
 		}
 		if product > largest {

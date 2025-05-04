@@ -37,7 +37,7 @@ func Solve004() int {
 
 	for i := limit; i > 100; i-- {
 		for j := limit; j > i-1; j-- {
-			x := (i * j)
+			x := i * j
 			if intIsPalindrome(x) {
 				palindromes = append(palindromes, x)
 			}
