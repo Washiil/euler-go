@@ -31,6 +31,8 @@ import (
 	_ "github.com/washiil/euler-go/problems/p021"
 	_ "github.com/washiil/euler-go/problems/p022"
 	_ "github.com/washiil/euler-go/problems/p023"
+	_ "github.com/washiil/euler-go/problems/p024"
+	_ "github.com/washiil/euler-go/problems/p025"
 
 	"github.com/washiil/euler-go/problems/registry"
 )
@@ -78,7 +80,7 @@ func main() {
 	fmt.Println()
 }
 
-func benchmark(function func() int, samples int) time.Duration {
+func benchmark(function func() any, samples int) time.Duration {
 	var total_duration time.Duration
 
 	for i := 0; i < samples; i++ {
